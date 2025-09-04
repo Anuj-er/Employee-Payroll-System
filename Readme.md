@@ -119,10 +119,10 @@ payroll-service/
 ## 👩‍💻 Contributors
 
 <p align="center">
-    <img src="https://github.com/AkankshaMishra2.png" width="70" style="border-radius:50%" alt="Akanksha"/>   
-    <img src="https://github.com/Anushi13prsnl.png" width="70" style="border-radius:50%" alt="Anushi"/>
-   <img src="https://github.com/Anuj-er.png" width="70" style="border-radius:50%" alt="Anuj"/>
-   <img src="https://github.com/abhinavrathee" width="70" style="border-radius:50%" alt="Abhinav"/>
+   <img src="https://github.com/AkankshaMishra2.png" width="70" height="70" style="border-radius:50%;object-fit:cover;" alt="Akanksha"/>
+   <img src="https://github.com/Anushi13prsnl.png" width="70" height="70" style="border-radius:50%;object-fit:cover;" alt="Anushi"/>
+   <img src="https://github.com/Anuj-er.png" width="70" height="70" style="border-radius:50%;object-fit:cover;" alt="Anuj"/>
+   <img src="https://github.com/abhinavrathee.png" width="70" height="70" style="border-radius:50%;object-fit:cover;" alt="Abhinav"/>
 </p>
 
 <p align="center">
