@@ -137,9 +137,7 @@ payroll-service/
 
 ---
 
-<p align="center">
-   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=7F27FF&center=true&vCenter=true&width=435&lines= Thank+you+for+visiting+our+project!"/>
-</p>
+
 
 ## Prerequisites
 - Java 17 or above
