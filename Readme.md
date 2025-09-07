@@ -71,7 +71,7 @@ Employee-Payroll/
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/AkankshaMishra2/Employee-Payroll-Service.git
+    git clone https://github.com/Anuj-er/Employee-Payroll-System.git
     ```
 2. **Navigate to a service:**
     ```bash
@@ -119,14 +119,14 @@ payroll-service/
 ## 👩‍💻 Contributors
 
 <p align="center">
-   <img src="https://github.com/AkankshaMishra2.png" width="70" height="70" style="border-radius:50%;object-fit:cover;" alt="Akanksha"/>
    <img src="https://github.com/Anushi13prsnl.png" width="70" height="70" style="border-radius:50%;object-fit:cover;" alt="Anushi"/>
    <img src="https://github.com/Anuj-er.png" width="70" height="70" style="border-radius:50%;object-fit:cover;" alt="Anuj"/>
+   <img src="https://github.com/AkankshaMishra2.png" width="70" height="70" style="border-radius:50%;object-fit:cover;" alt="Akanksha"/>
    <img src="https://github.com/abhinavrathee.png" width="70" height="70" style="border-radius:50%;object-fit:cover;" alt="Abhinav"/>
 </p>
 
 <p align="center">
-   <b>Akanksha</b> • <b>Anushi</b> • <b>Anuj</b> • <b>Abhinav</b>
+   <b>Anushi</b> • <b>Anuj</b> • <b>Akanksha</b> • <b>Abhinav</b>
 </p>
 
 ---

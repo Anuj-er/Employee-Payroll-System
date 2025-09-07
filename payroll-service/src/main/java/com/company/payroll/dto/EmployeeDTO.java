@@ -3,6 +3,7 @@ package com.company.payroll.dto;
 import java.time.LocalDate;
 
 public class EmployeeDTO {
+    private Long id;
     private String employeeCode;
     private String firstName;
     private String lastName;
@@ -11,6 +12,15 @@ public class EmployeeDTO {
     private String position;
     private LocalDate joinDate;
     private Double basicSalary;
+    
+    public Long getId() {
+        return id;
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public String getEmployeeCode() {
         return employeeCode;
     }

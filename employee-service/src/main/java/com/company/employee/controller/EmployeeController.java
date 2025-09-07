@@ -12,6 +12,7 @@ import com.company.employee.entity.Employee;
 import com.company.employee.service.EmployeeService;
 
 import org.springframework.http.HttpHeaders;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,21 +23,18 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @Autowired
-    private RestTemplate restTemplate;
-
     @Value("${payroll.service.url}")
     private String payrollServiceUrl;
 
     // Create a new employee
     @PostMapping
-    public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
+    public ResponseEntity<Employee> createEmployee(@Valid @RequestBody Employee employee) {
         Employee savedEmployee = employeeService.saveEmployee(employee);
         return ResponseEntity.ok(savedEmployee);
     }
 
     @PostMapping("/bulk")
-    public ResponseEntity<List<Employee>> createEmployees(@RequestBody List<Employee> employees) {
+    public ResponseEntity<List<Employee>> createEmployees(@Valid @RequestBody List<Employee> employees) {
         List<Employee> saved = employees.stream()
             .map(employeeService::saveEmployee)
             .toList();

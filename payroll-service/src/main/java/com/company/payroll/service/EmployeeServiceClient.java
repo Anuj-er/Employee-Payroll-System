@@ -19,20 +19,28 @@ public class EmployeeServiceClient {
     private String employeeServiceUrl;
 
     public EmployeeDTO getEmployeeByCode(String employeeCode) {
-        String url = employeeServiceUrl + "/code/" + employeeCode;
+        try {
+            String url = employeeServiceUrl + "/code/" + employeeCode;
 
-        // Set up Basic Auth header for employee-service
-        HttpHeaders headers = new HttpHeaders();
-        String auth = "admin:admin123"; // Use the credentials for employee-service
-        byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes());
-        String authHeader = "Basic " + new String(encodedAuth);
-        headers.set("Authorization", authHeader);
+            // Set up Basic Auth header for employee-service
+            HttpHeaders headers = new HttpHeaders();
+            String auth = "admin:admin123"; // Use the credentials for employee-service
+            byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes());
+            String authHeader = "Basic " + new String(encodedAuth);
+            headers.set("Authorization", authHeader);
 
-        HttpEntity<String> entity = new HttpEntity<>(headers);
+            HttpEntity<String> entity = new HttpEntity<>(headers);
 
-        ResponseEntity<EmployeeDTO> response = restTemplate.exchange(
-            url, HttpMethod.GET, entity, EmployeeDTO.class);
+            ResponseEntity<EmployeeDTO> response = restTemplate.exchange(
+                url, HttpMethod.GET, entity, EmployeeDTO.class);
 
-        return response.getBody();
+            if (response.getBody() == null) {
+                throw new RuntimeException("Employee service returned null response for employee code: " + employeeCode);
+            }
+            
+            return response.getBody();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to fetch employee with code: " + employeeCode + ". Error: " + e.getMessage(), e);
+        }
     }
 }

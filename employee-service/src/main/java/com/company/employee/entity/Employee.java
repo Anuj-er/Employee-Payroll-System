@@ -2,6 +2,7 @@ package com.company.employee.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -12,15 +13,20 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Employee code is required")
     @Column(unique = true, nullable = false)
     private String employeeCode;
 
+    @NotBlank(message = "First name is required")
     @Column(nullable = false)
     private String firstName;
 
+    @NotBlank(message = "Last name is required")
     @Column(nullable = false)
     private String lastName;
 
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
     @Column(unique = true, nullable = false)
     private String email;
 
