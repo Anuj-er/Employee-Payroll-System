@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,6 +21,9 @@ public class PayrollSchedulerService {
     
     @Autowired
     private PayrollService payrollService;
+
+    @Autowired
+    private JwtInterServiceClient jwtInterServiceClient;
     
     @Value("${payroll.automation.enabled:true}")
     private boolean automationEnabled;
@@ -43,22 +45,9 @@ public class PayrollSchedulerService {
         logger.info("Starting automated monthly payroll generation...");
         
         try {
-            // Get all employees from employee service
-            RestTemplate restTemplate = new RestTemplate();
-            String auth = "admin:admin123";
-            String encodedAuth = java.util.Base64.getEncoder().encodeToString(auth.getBytes());
-            
-            org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
-            headers.add("Authorization", "Basic " + encodedAuth);
-            org.springframework.http.HttpEntity<String> entity = new org.springframework.http.HttpEntity<>(headers);
-            
-            // Fetch all employees
-            org.springframework.http.ResponseEntity<EmployeeDTO[]> response = restTemplate.exchange(
-                employeeServiceUrl, 
-                org.springframework.http.HttpMethod.GET, 
-                entity, 
-                EmployeeDTO[].class
-            );
+            // Fetch all employees using JWT authentication
+            org.springframework.http.ResponseEntity<EmployeeDTO[]> response = 
+                jwtInterServiceClient.getWithJwt(employeeServiceUrl, EmployeeDTO[].class);
             
             EmployeeDTO[] employees = response.getBody();
             if (employees != null) {
@@ -114,22 +103,9 @@ public class PayrollSchedulerService {
         logger.info("Starting transactional bulk payroll generation...");
         
         try {
-            // Get all employees from employee service
-            RestTemplate restTemplate = new RestTemplate();
-            String auth = "admin:admin123";
-            String encodedAuth = java.util.Base64.getEncoder().encodeToString(auth.getBytes());
-            
-            org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
-            headers.add("Authorization", "Basic " + encodedAuth);
-            org.springframework.http.HttpEntity<String> entity = new org.springframework.http.HttpEntity<>(headers);
-            
-            // Fetch all employees
-            org.springframework.http.ResponseEntity<EmployeeDTO[]> response = restTemplate.exchange(
-                employeeServiceUrl, 
-                org.springframework.http.HttpMethod.GET, 
-                entity, 
-                EmployeeDTO[].class
-            );
+            // Fetch all employees using JWT authentication
+            org.springframework.http.ResponseEntity<EmployeeDTO[]> response = 
+                jwtInterServiceClient.getWithJwt(employeeServiceUrl, EmployeeDTO[].class);
             
             EmployeeDTO[] employees = response.getBody();
             if (employees != null) {

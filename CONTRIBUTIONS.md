@@ -29,4 +29,16 @@ This document tracks the contributions made to the Employee Payroll System proje
 - Removed unused code and cleaned up architecture
 - Added global exception handlers for better error responses
 
+**JWT Authentication Implementation**
+- Migrated from HTTP Basic Auth to JWT-based authentication
+- Added JWT dependencies (jjwt-api, jjwt-impl, jjwt-jackson) to both services
+- Implemented JwtUtil classes for token generation, validation, and parsing
+- Created JwtAuthenticationFilter for request-level JWT validation
+- Added AuthController with /api/auth/login endpoints for both services
+- Configured SecurityConfig to disable Basic Auth and enable JWT-only authentication
+- Implemented JwtInterServiceClient for secure service-to-service communication
+- Updated all inter-service calls to use JWT authentication instead of Basic Auth
+- Added JWT configuration properties (secret key, expiration time)
+- Enhanced security with stateless session management and proper filter chains
+
 ---

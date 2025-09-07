@@ -2,16 +2,13 @@ package com.company.employee.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import com.company.employee.entity.Employee;
 import com.company.employee.service.EmployeeService;
+import com.company.employee.service.JwtInterServiceClient;
 
-import org.springframework.http.HttpHeaders;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +19,9 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    private JwtInterServiceClient jwtInterServiceClient;
 
     @Value("${payroll.service.url}")
     private String payrollServiceUrl;
@@ -88,17 +88,9 @@ public class EmployeeController {
         Employee employee = employeeOpt.get();
         Long id = employee.getId();
 
-        // Call payroll-service to delete salaries by employeeCode
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setBasicAuth("hr", "hr123"); // Replace with actual username and password
-        HttpEntity<String> entity = new HttpEntity<>(headers);
-
-        restTemplate.exchange(
-            "http://localhost:8082/api/payroll/salaries/by-employee/" + employeeCode,
-            HttpMethod.DELETE,
-            entity,
-            Void.class
+        // Call payroll-service to delete salaries by employeeCode using JWT
+        jwtInterServiceClient.deleteWithJwt(
+            "http://localhost:8082/api/payroll/salaries/by-employee/" + employeeCode
         );
 
         // Delete employee
