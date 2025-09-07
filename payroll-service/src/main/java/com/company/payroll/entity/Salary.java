@@ -42,7 +42,6 @@ public class Salary {
     private Double netSalary;
     
     @NotNull(message = "Pay period is required")
-    @PastOrPresent(message = "Pay period cannot be in the future")
     @Column(nullable = false)
     private LocalDate payPeriod;
     

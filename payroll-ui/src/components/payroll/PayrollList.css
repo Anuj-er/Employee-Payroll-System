@@ -1,0 +1,198 @@
+.payroll-list {
+  padding: 1.5rem;
+}
+
+.list-header {
+  margin-bottom: 1.5rem;
+}
+
+.list-header h2 {
+  color: #495057;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.no-data {
+  text-align: center;
+  padding: 4rem;
+  color: #6c757d;
+}
+
+.no-data h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.no-data p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.payroll-table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.payroll-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  min-width: 900px;
+}
+
+.payroll-table th,
+.payroll-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.payroll-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.payroll-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.employee-code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.currency {
+  font-weight: 600;
+  text-align: right;
+}
+
+.currency.positive {
+  color: #28a745;
+}
+
+.currency.negative {
+  color: #dc3545;
+}
+
+.net-salary {
+  color: #667eea;
+  font-size: 1.1rem;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.draft {
+  background: #f8f9fa;
+  color: #6c757d;
+  border: 1px solid #dee2e6;
+}
+
+.status-badge.approved {
+  background: #cce5ff;
+  color: #0066cc;
+  border: 1px solid #99d6ff;
+}
+
+.status-badge.paid {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-badge.cancelled {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 0.25rem 0.75rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.action-btn.process {
+  background: #007bff;
+  color: white;
+}
+
+.action-btn.process:hover:not(:disabled) {
+  background: #0056b3;
+  transform: translateY(-1px);
+}
+
+.action-btn.paid {
+  background: #28a745;
+  color: white;
+}
+
+.action-btn.paid:hover:not(:disabled) {
+  background: #1e7e34;
+  transform: translateY(-1px);
+}
+
+.action-btn.cancel {
+  background: #dc3545;
+  color: white;
+}
+
+.action-btn.cancel:hover:not(:disabled) {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+.action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.no-actions {
+  color: #6c757d;
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .payroll-table-container {
+    font-size: 0.875rem;
+  }
+  
+  .payroll-table th,
+  .payroll-table td {
+    padding: 0.5rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .action-btn {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
